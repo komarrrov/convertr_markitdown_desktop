@@ -8,6 +8,8 @@ A simple Windows desktop app that converts documents (PDF, Word, Excel, PowerPoi
 
 GUI with an **RU / EN** language switch, drag-and-drop, and batch conversion. Powered by Microsoft's [`markitdown`](https://github.com/microsoft/markitdown) library.
 
+![MarkItDown Converter — скриншот / screenshot](assets/screenshot.png)
+
 ---
 
 ## 🇷🇺 Русский
@@ -94,6 +96,18 @@ To share with friends, zip that whole folder.
 - Движок / engine: `markitdown[all]` (Microsoft)
 - Сборка / packaging: `PyInstaller` (`--onedir --windowed`, см. `build.bat` / `build.sh`)
 - Первый запуск свежесобранного `.exe` может быть медленным (~10 с): антивирус/OneDrive сканируют файлы.
+
+## ☕ Поддержать / Support
+
+🇷🇺 Если приложение оказалось полезным и вы хотите поддержать его дальнейшее развитие — буду благодарен за любой вклад. Это совершенно добровольно. 🙏
+
+🇬🇧 If this app was useful and you'd like to support its further development, any contribution is appreciated — entirely optional. 🙏
+
+- **Сеть / Network:** Ethereum (ERC-20)
+- **Адрес кошелька / Wallet address:** `0x213FAEf3e8fC382954D41f492F973693025fA2F5`
+
+> ⚠️ Перед отправкой убедитесь, что перевод осуществляется именно по сети **Ethereum (ERC-20)**.
+> Before sending, make sure the transfer uses the **Ethereum (ERC-20)** network.
 
 ## 📄 Лицензия / License
 MIT — см. файл [LICENSE](LICENSE).
