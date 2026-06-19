@@ -27,17 +27,33 @@ PDF, Word (`.docx`), Excel (`.xlsx`, `.xls`), PowerPoint (`.pptx`, `.ppt`),
 HTML, TXT, CSV, JSON, XML, ZIP, изображения (`.jpg`, `.png`, `.gif`, `.bmp`, `.webp`),
 аудио (`.mp3`, `.wav`, `.m4a`).
 
-### Установка и запуск (для обычного пользователя)
+### 📥 Установка и запуск (подробно, для обычного пользователя)
 > 💡 **Python устанавливать НЕ нужно** — он уже встроен в приложение. Просто скачай и запусти.
 
-Есть два формата сборки:
-- **Один файл** (`MarkItDown Converter.exe`, режим onefile) — скачал один `.exe`, дважды кликнул, работает. Первый запуск медленнее (~10–30 с): файл распаковывается во временную папку.
-- **Папка** (режим onedir) — запускается быстрее, но раздавать нужно **всю папку целиком**: рядом с `MarkItDown Converter.exe` лежит папка `_internal` с движком.
+**Шаг 1. Скачай приложение.** Есть два формата:
 
-Затем:
-1. Запусти `MarkItDown Converter.exe`.
-2. Перетащи файлы в окно → выбери папку для сохранения → нажми **«Конвертировать»**.
-   Рядом появятся файлы `.md`.
+| Формат | Что качать | Плюсы | Минусы |
+|---|---|---|---|
+| **Один файл** (onefile) | один `MarkItDown Converter.exe` | ничего не надо распаковывать, удобно пересылать | первый запуск медленный (~10–40 с) |
+| **Папка** (onedir) | архив с папкой → распаковать целиком | запускается быстро | папку **нельзя разбивать**: рядом с `.exe` обязана лежать папка `_internal` |
+
+**Шаг 2. Запусти `MarkItDown Converter.exe`** (двойной клик).
+- Если Windows покажет окно **«SmartScreen защитил ваш компьютер»** — это нормально для новых программ без цифровой подписи. Нажми **«Подробнее» → «Выполнить в любом случае»**.
+- Первый запуск версии «один файл» может занять до ~40 секунд (распаковка во временную папку + проверка антивирусом). Следующие запуски — быстрее.
+
+**Шаг 3. Добавь файлы** — двумя способами:
+- **перетащи** файлы мышкой прямо в окно (в область с подсказкой «Перетащи файлы сюда»), либо
+- нажми **«+ Добавить»** и выбери файлы в диалоге.
+
+Файлы появятся списком. Лишний можно убрать крестиком **✕**, очистить весь список — кнопкой **«Очистить»**. Можно добавить сразу много файлов — они сконвертируются пакетом.
+
+**Шаг 4. Укажи папку для сохранения** — нажми **«Обзор»** и выбери, куда положить результат.
+
+**Шаг 5. Нажми «Конвертировать →».** Появится прогресс по каждому файлу и общий; внизу по завершении — **«Готово!»**.
+
+**Где результат?** Для каждого исходного файла рядом в выбранной папке создаётся `.md`-файл с тем же именем (например, `отчёт.pdf` → `отчёт.md`). Его можно открыть любым текстовым редактором или сразу вставить содержимое в ИИ (ChatGPT, Claude и т.п.).
+
+**Язык интерфейса** переключается кнопкой 🌐 **RU / EN** в правом верхнем углу; выбор запоминается.
 
 ### Сборка из исходников (для разработки)
 Нужен **Python 3.10+** для Windows.
@@ -77,17 +93,33 @@ PDF, Word (`.docx`), Excel (`.xlsx`, `.xls`), PowerPoint (`.pptx`, `.ppt`),
 HTML, TXT, CSV, JSON, XML, ZIP, images (`.jpg`, `.png`, `.gif`, `.bmp`, `.webp`),
 audio (`.mp3`, `.wav`, `.m4a`).
 
-### Install & run (for end users)
+### 📥 Install & run (step-by-step, for end users)
 > 💡 **You do NOT need Python installed** — it's bundled inside the app. Just download and run.
 
-There are two build formats:
-- **Single file** (`MarkItDown Converter.exe`, onefile mode) — download one `.exe`, double-click, done. First launch is slower (~10–30 s) as it unpacks to a temp folder.
-- **Folder** (onedir mode) — starts faster, but you must share the **whole folder**: the `_internal` folder next to `MarkItDown Converter.exe` holds the engine.
+**Step 1. Download the app.** Two formats are available:
 
-Then:
-1. Run `MarkItDown Converter.exe`.
-2. Drag files into the window → choose an output folder → click **“Convert”**.
-   The `.md` files appear next to it.
+| Format | What you download | Pros | Cons |
+|---|---|---|---|
+| **Single file** (onefile) | one `MarkItDown Converter.exe` | nothing to unpack, easy to send | first launch is slow (~10–40 s) |
+| **Folder** (onedir) | a zip with a folder → unzip it whole | starts fast | **don't split the folder**: the `_internal` folder must stay next to the `.exe` |
+
+**Step 2. Run `MarkItDown Converter.exe`** (double-click).
+- If Windows shows **“SmartScreen protected your PC”**, that's normal for new unsigned apps. Click **“More info” → “Run anyway”**.
+- The first launch of the single-file build can take up to ~40 s (it unpacks to a temp folder and the antivirus scans it). Later launches are faster.
+
+**Step 3. Add files** — two ways:
+- **drag & drop** files straight into the window (onto the “Drag files here” area), or
+- click **“+ Add”** and pick files in the dialog.
+
+Files show up as a list. Remove one with the **✕**, clear all with **“Clear”**. You can add many files at once — they convert as a batch.
+
+**Step 4. Choose an output folder** — click **“Browse”** and pick where to save the results.
+
+**Step 5. Click “Convert →”.** You'll see per-file and overall progress; **“Done!”** appears at the bottom when finished.
+
+**Where's the output?** For each input file a `.md` file with the same name is created in the chosen folder (e.g. `report.pdf` → `report.md`). Open it in any text editor or paste its content straight into an AI (ChatGPT, Claude, etc.).
+
+**Interface language** is toggled with the 🌐 **RU / EN** button in the top-right corner; your choice is remembered.
 
 ### Build from source (for development)
 Requires **Python 3.10+** on Windows.
@@ -112,6 +144,28 @@ Result: `dist_onefile\MarkItDown Converter.exe` — shareable as-is.
 
 ---
 
+## ❓ Частые вопросы / FAQ
+
+**Нужен ли Python / интернет?** / *Do I need Python or internet?*
+Нет. Python встроен в `.exe`, а конвертация локальных файлов идёт офлайн. /
+No. Python is bundled in the `.exe`, and converting local files works offline.
+
+**Антивирус или SmartScreen ругается.** / *Antivirus or SmartScreen complains.*
+Это типичное ложное срабатывание для неподписанных программ, собранных PyInstaller. Нажми «Подробнее» → «Выполнить в любом случае» или добавь файл в исключения антивируса. /
+This is a common false positive for unsigned PyInstaller apps. Click “More info” → “Run anyway”, or add the file to your antivirus exceptions.
+
+**Первый запуск долгий (версия «один файл»).** / *First launch is slow (single-file build).*
+Файл распаковывается во временную папку, антивирус его сканирует. Следующие запуски быстрее. Нужен мгновенный старт — бери папочную версию (onedir). /
+The file unpacks to a temp folder and gets scanned. Later launches are faster. Need instant start — use the folder (onedir) build.
+
+**Один из файлов не сконвертировался.** / *One of the files failed.*
+Остальные всё равно сконвертируются; в конце появится список файлов с ошибками и их причинами. Проверь, что файл не повреждён и его формат поддерживается. /
+The rest still convert; a list of failed files with reasons is shown at the end. Make sure the file isn't corrupted and its format is supported.
+
+**Где хранится выбранный язык?** / *Where is the chosen language stored?*
+В файле `~/.markitdown_converter.json` (в папке профиля пользователя). /
+In `~/.markitdown_converter.json` (in your user profile folder).
+
 ## ⚙️ Технические детали / Tech notes
 - GUI: `tkinter` + `tkinterdnd2` (drag & drop)
 - Движок / engine: `markitdown[all]` (Microsoft)
@@ -124,11 +178,15 @@ Result: `dist_onefile\MarkItDown Converter.exe` — shareable as-is.
 
 🇬🇧 If this app was useful and you'd like to support its further development, any contribution is appreciated — entirely optional. 🙏
 
-- **Сеть / Network:** Ethereum (ERC-20)
-- **Адрес кошелька / Wallet address:** `0x213FAEf3e8fC382954D41f492F973693025fA2F5`
+Для перевода USDT используйте следующие реквизиты / To send USDT, use these details:
 
-> ⚠️ Перед отправкой убедитесь, что перевод осуществляется именно по сети **Ethereum (ERC-20)**.
-> Before sending, make sure the transfer uses the **Ethereum (ERC-20)** network.
+- 💰 **Валюта / Currency:** USDT (Tether)
+- 🌐 **Сеть / Network:** Ethereum (ERC-20)
+- 📍 **Адрес кошелька / Wallet address:**
+  `0x213FAEf3e8fC382954D41f492F973693025fA2F5`
+
+> ⚠️ Перед отправкой убедитесь, что перевод осуществляется именно в **USDT** по сети **Ethereum (ERC-20)**.
+> Before sending, make sure you send **USDT** over the **Ethereum (ERC-20)** network.
 
 ## 📄 Лицензия / License
 MIT — см. файл [LICENSE](LICENSE).
