@@ -28,10 +28,15 @@ HTML, TXT, CSV, JSON, XML, ZIP, изображения (`.jpg`, `.png`, `.gif`, 
 аудио (`.mp3`, `.wav`, `.m4a`).
 
 ### Установка и запуск (для обычного пользователя)
-1. Скачай готовую папку приложения (из раздела **Releases** на GitHub или у автора).
-2. Распакуй архив целиком — **не разбивай папку**: рядом с `MarkItDown Converter.exe` лежит папка `_internal` с движком, без неё работать не будет.
-3. Запусти `MarkItDown Converter.exe`.
-4. Перетащи файлы в окно → выбери папку для сохранения → нажми **«Конвертировать»**.
+> 💡 **Python устанавливать НЕ нужно** — он уже встроен в приложение. Просто скачай и запусти.
+
+Есть два формата сборки:
+- **Один файл** (`MarkItDown Converter.exe`, режим onefile) — скачал один `.exe`, дважды кликнул, работает. Первый запуск медленнее (~10–30 с): файл распаковывается во временную папку.
+- **Папка** (режим onedir) — запускается быстрее, но раздавать нужно **всю папку целиком**: рядом с `MarkItDown Converter.exe` лежит папка `_internal` с движком.
+
+Затем:
+1. Запусти `MarkItDown Converter.exe`.
+2. Перетащи файлы в окно → выбери папку для сохранения → нажми **«Конвертировать»**.
    Рядом появятся файлы `.md`.
 
 ### Сборка из исходников (для разработки)
@@ -48,6 +53,12 @@ build.bat
 ```
 Готовое приложение появится в папке `dist\MarkItDown Converter\`.
 Чтобы поделиться с друзьями — заархивируй всю эту папку целиком.
+
+Либо собери **один файл** (Python пользователю не нужен):
+```bat
+build_onefile.bat
+```
+Результат: `dist_onefile\MarkItDown Converter.exe` — его можно отдавать как есть.
 
 ---
 
@@ -67,11 +78,15 @@ HTML, TXT, CSV, JSON, XML, ZIP, images (`.jpg`, `.png`, `.gif`, `.bmp`, `.webp`)
 audio (`.mp3`, `.wav`, `.m4a`).
 
 ### Install & run (for end users)
-1. Download the ready app folder (from the GitHub **Releases** section or from the author).
-2. Unzip the whole folder — **keep it together**: the `_internal` folder next to
-   `MarkItDown Converter.exe` holds the engine; the app won't run without it.
-3. Run `MarkItDown Converter.exe`.
-4. Drag files into the window → choose an output folder → click **“Convert”**.
+> 💡 **You do NOT need Python installed** — it's bundled inside the app. Just download and run.
+
+There are two build formats:
+- **Single file** (`MarkItDown Converter.exe`, onefile mode) — download one `.exe`, double-click, done. First launch is slower (~10–30 s) as it unpacks to a temp folder.
+- **Folder** (onedir mode) — starts faster, but you must share the **whole folder**: the `_internal` folder next to `MarkItDown Converter.exe` holds the engine.
+
+Then:
+1. Run `MarkItDown Converter.exe`.
+2. Drag files into the window → choose an output folder → click **“Convert”**.
    The `.md` files appear next to it.
 
 ### Build from source (for development)
@@ -88,6 +103,12 @@ build.bat
 ```
 The finished app appears in `dist\MarkItDown Converter\`.
 To share with friends, zip that whole folder.
+
+Or build a **single file** (no Python needed on the user's machine):
+```bat
+build_onefile.bat
+```
+Result: `dist_onefile\MarkItDown Converter.exe` — shareable as-is.
 
 ---
 
