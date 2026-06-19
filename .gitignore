@@ -1,0 +1,27 @@
+# ── Сборка PyInstaller / PyInstaller build output ──
+/build/
+/dist/
+/dist_*/
+/build_*/
+*.spec
+*_log.txt
+
+# ── Виртуальное окружение / virtualenv ──
+/venv/
+/.venv/
+env/
+
+# ── Python ──
+__pycache__/
+*.py[cod]
+*.egg-info/
+.mypy_cache/
+.pytest_cache/
+
+# ── Временные файлы тестов / temp test files ──
+_smoketest_out.md
+
+# ── ОС / OS ──
+Thumbs.db
+desktop.ini
+.DS_Store
