@@ -37,6 +37,8 @@ echo ==^> Собираю .exe (это займёт пару минут)...
   --noconfirm --clean ^
   --onedir --windowed ^
   --name "MarkItDown Converter" ^
+  --icon "assets\icon.ico" ^
+  --add-data "assets\icon.ico;." ^
   --collect-all markitdown ^
   --collect-all magika ^
   --collect-all onnxruntime ^

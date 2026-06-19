@@ -77,6 +77,7 @@ TR = {
         "ft_supported":  "Поддерживаемые файлы",
         "ft_all":        "Все файлы",
         "lang_btn":      "EN",
+        "open_folder":   "📂 Открыть папку с результатом",
     },
     "en": {
         "subtitle":      "Convert documents to Markdown",
@@ -101,30 +102,49 @@ TR = {
         "ft_supported":  "Supported files",
         "ft_all":        "All files",
         "lang_btn":      "RU",
+        "open_folder":   "📂 Open output folder",
     },
 }
 
 CONFIG_PATH = Path.home() / ".markitdown_converter.json"
 
 
-def load_lang() -> str:
+def load_config() -> dict:
     try:
-        lang = json.loads(CONFIG_PATH.read_text(encoding="utf-8")).get("lang")
-        if lang in TR:
-            return lang
+        d = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
+        return d if isinstance(d, dict) else {}
+    except Exception:
+        return {}
+
+
+_CFG = load_config()
+
+
+def save_config() -> None:
+    """Сохранить язык и последнюю выбранную папку между запусками."""
+    try:
+        data = {"lang": LANG}
+        try:
+            data["out"] = output_var.get()
+        except Exception:
+            pass
+        CONFIG_PATH.write_text(json.dumps(data), encoding="utf-8")
     except Exception:
         pass
-    return "ru"
 
 
-def save_lang() -> None:
-    try:
-        CONFIG_PATH.write_text(json.dumps({"lang": LANG}), encoding="utf-8")
-    except Exception:
-        pass
+def icon_path():
+    """Путь к иконке — работает и из исходников, и из PyInstaller-сборки."""
+    if hasattr(sys, "_MEIPASS"):
+        p = os.path.join(sys._MEIPASS, "icon.ico")
+    elif "__file__" in globals():
+        p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "icon.ico")
+    else:
+        return None
+    return p if os.path.exists(p) else None
 
 
-LANG = load_lang()
+LANG = _CFG.get("lang") if _CFG.get("lang") in TR else "ru"
 
 
 def t(key: str, **kw) -> str:
@@ -258,12 +278,24 @@ def pick_output():
     folder = filedialog.askdirectory(title=t("dlg_out"))
     if folder:
         output_var.set(folder)
+        save_config()
+
+
+def open_output():
+    out = output_var.get()
+    if out and os.path.isdir(out):
+        try:
+            os.startfile(out)
+        except Exception:
+            pass
+    else:
+        status_lbl.config(text=t("need_out"), fg=DANGER)
 
 
 def toggle_lang():
     global LANG
     LANG = "en" if LANG == "ru" else "ru"
-    save_lang()
+    save_config()
     apply_language()
 
 
@@ -279,6 +311,7 @@ def apply_language():
     prog_files_lbl.config(text=t("prog_files"))
     cur_file_lbl.config(text=t("cur_file"))
     lang_btn.config(text="🌐 " + t("lang_btn"))
+    open_btn.config(text=t("open_folder"))
     status_lbl.config(text="")
     refresh_list()
 
@@ -350,7 +383,14 @@ root = TkinterDnD.Tk()
 root.title("MarkItDown Converter")
 root.configure(bg=BG)
 root.resizable(False, False)
-root.geometry("620x680")
+root.geometry("620x720")
+
+_ICON = icon_path()
+if _ICON:
+    try:
+        root.iconbitmap(_ICON)
+    except Exception:
+        pass
 
 # Шапка
 header = tk.Frame(root, bg=PRIMARY, pady=18)
@@ -419,6 +459,9 @@ out_title_lbl.pack(anchor="w")
 out_row = tk.Frame(body, bg=BG)
 out_row.pack(fill="x", pady=(6, 0))
 output_var = tk.StringVar()
+_saved_out = _CFG.get("out", "")
+if _saved_out and os.path.isdir(_saved_out):
+    output_var.set(_saved_out)
 tk.Entry(out_row, textvariable=output_var, font=("Segoe UI", 10),
          relief="flat", bg=SURFACE,
          highlightbackground=BORDER, highlightthickness=1).pack(
@@ -465,5 +508,8 @@ file_progress.pack(fill="x", pady=(2, 4))
 
 status_lbl = tk.Label(body, text="", bg=BG, fg=SUBTEXT, font=("Segoe UI", 9))
 status_lbl.pack()
+
+open_btn = make_btn(body, t("open_folder"), open_output, "outline")
+open_btn.pack(pady=(10, 0))
 
 root.mainloop()
